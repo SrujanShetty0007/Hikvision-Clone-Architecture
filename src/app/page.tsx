@@ -10,6 +10,8 @@ import { EditorialFeature } from '@/components/home/EditorialFeature';
 import { ResourceCards } from '@/components/home/ResourceCards';
 import { VideoStories } from '@/components/home/VideoStories';
 import { RelatedLinks } from '@/components/home/RelatedLinks';
+import { CorporatePhilosophy } from '@/components/home/CorporatePhilosophy';
+import { WhereToBuy } from '@/components/home/WhereToBuy';
 import { Play, X } from 'lucide-react';
 import Image from 'next/image';
 
@@ -44,6 +46,12 @@ export default function HomePage() {
 
       {/* Section 9: Related Links */}
       <RelatedLinks />
+
+      {/* Section 10: Corporate Philosophy with Hover Reveal */}
+      <CorporatePhilosophy />
+
+      {/* Section 11: Where to Buy */}
+      <WhereToBuy />
 
       {/* Keynote Video Modal triggered from Hero Slide 2 */}
       {showKeynoteModal && (

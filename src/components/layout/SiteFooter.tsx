@@ -193,15 +193,23 @@ export const SiteFooter: React.FC = () => {
           </div>
         </div>
 
-        {/* Legal & Copyright */}
+        {/* Legal & Copyright & Webotrex Solutions Credit */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
-          <p>© 2026 NexusVision Digital Technology Co., Ltd. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-5">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-center sm:text-left">
+            <p>© 2026 Hangzhou Hikvision Digital Technology Co., Ltd. All Rights Reserved.</p>
+            <span className="hidden sm:inline text-gray-600">|</span>
+            <p className="text-gray-300 font-medium">
+              Architected &amp; Developed by{' '}
+              <span className="text-white font-bold tracking-wide hover:text-[#D71920] transition-colors cursor-pointer">
+                Webotrex Solutions
+              </span>
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-5">
             <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#cookie" className="hover:text-white transition-colors">Cookie Policy</a>
-            <a href="#terms" className="hover:text-white transition-colors">Terms of Use</a>
-            <a href="#security" className="hover:text-white transition-colors">Cybersecurity Notice</a>
-            <a href="#compliance" className="hover:text-white transition-colors">Ethics &amp; Compliance</a>
+            <a href="#cookies-pref" className="hover:text-white transition-colors">Cookies Preferences</a>
+            <a href="#terms" className="hover:text-white transition-colors">General Terms of Use</a>
           </div>
         </div>
       </div>
