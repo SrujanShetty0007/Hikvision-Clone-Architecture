@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { HeroCarousel } from '@/components/home/HeroCarousel';
 import { FeaturedCarousel } from '@/components/home/FeaturedCarousel';
+import { CoreTechnologies } from '@/components/home/CoreTechnologies';
 import { ProductCategoryGrid } from '@/components/home/ProductCategoryGrid';
 import { SolutionDiscovery } from '@/components/home/SolutionDiscovery';
 import { EditorialFeature } from '@/components/home/EditorialFeature';
@@ -23,7 +24,10 @@ export default function HomePage() {
       {/* Section 3: Featured Product and Solution Carousel */}
       <FeaturedCarousel />
 
-      {/* Section 4: Product Categories Grid */}
+      {/* Section 4: Core Technologies (Guanlan Encoding & AI Video Optics) */}
+      <CoreTechnologies />
+
+      {/* Section 5: Product Categories Grid */}
       <ProductCategoryGrid />
 
       {/* Section 5: Solutions Discovery */}
