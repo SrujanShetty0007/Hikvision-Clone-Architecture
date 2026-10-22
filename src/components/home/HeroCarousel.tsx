@@ -101,6 +101,8 @@ interface HeroCarouselProps {
   onOpenVideo?: () => void;
 }
 
+const AUTO_PLAY_INTERVAL = 4000; // 4 seconds (within 3-5s range requested)
+
 export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -116,14 +118,22 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
     setCurrentIdx((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
+  const goToSlide = (idx: number) => {
+    setCurrentIdx(idx);
+  };
+
+  // Autoplay timer: advances slide every 4 seconds (3-5s) unless explicitly paused
   useEffect(() => {
-    if (!isPaused) {
-      timerRef.current = setInterval(nextSlide, 7000);
-    }
+    if (isPaused) return;
+
+    timerRef.current = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % totalSlides);
+    }, AUTO_PLAY_INTERVAL);
+
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused, currentIdx]);
+  }, [isPaused, currentIdx, totalSlides]);
 
   const slide = slides[currentIdx];
   const isDark = slide.theme === 'dark';
@@ -131,16 +141,24 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
   return (
     <section
       className="relative w-full h-[88vh] min-h-[720px] max-h-[960px] bg-gray-950 overflow-hidden select-none"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       aria-label="Promotional Hero Showcase"
     >
+      {/* 4-Second Animated Progress Bar at Top */}
+      {!isPaused && (
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-white/15 z-40 overflow-hidden">
+          <div
+            key={currentIdx}
+            className="h-full bg-[#D71920] w-full animate-hero-progress shadow-[0_0_8px_rgba(215,25,32,0.8)]"
+          />
+        </div>
+      )}
+
       {/* Background Image Slides */}
       {slides.map((s, idx) => (
         <div
           key={s.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            idx === currentIdx ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+            idx === currentIdx ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105 pointer-events-none'
           }`}
         >
           <Image
@@ -148,7 +166,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
             alt={s.title}
             fill
             priority={idx === 0}
-            className="object-cover object-center"
+            className="object-cover object-center transition-transform duration-1000 ease-out"
             sizes="100vw"
           />
           {/* Subtle gradient overlay to guarantee text legibility */}
@@ -246,10 +264,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
           return (
             <button
               key={idx}
-              onClick={() => setCurrentIdx(idx)}
+              onClick={() => goToSlide(idx)}
               className={`transition-all rounded-full flex items-center justify-center font-mono cursor-pointer ${
                 isActive
-                  ? 'w-7 h-7 text-xs font-bold bg-white text-gray-950 shadow-md border border-gray-300'
+                  ? 'w-7 h-7 text-xs font-bold bg-white text-gray-950 shadow-md border border-gray-300 ring-2 ring-[#D71920]/40'
                   : 'w-2.5 h-2.5 bg-white/50 hover:bg-white'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
