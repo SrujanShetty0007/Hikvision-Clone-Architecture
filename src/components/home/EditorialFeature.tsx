@@ -11,47 +11,47 @@ export const EditorialFeature: React.FC = () => {
       <div className="container-enterprise">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-6xl mx-auto">
           {/* Left Text Column */}
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-semibold text-[#D71920] uppercase tracking-wider block">
+          <div className="lg:col-span-6 space-y-7">
+            <span className="text-sm font-bold text-[#D71920] uppercase tracking-wider block">
               Core Vision Architecture
             </span>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-white">
               Next-Gen DeepinView: Neural Edge Vision at 0.0005 Lux
             </h2>
 
-            <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed font-normal">
               Equipped with our latest 8th-generation neural processing unit, NEXUSVISION cameras execute multi-layered convolutional neural inference directly at the optical sensor edge. By classifying human postures, vehicle models, and license plates in sub-milliseconds, false intrusion alarms are eliminated.
             </p>
 
             {/* Metric Highlights */}
-            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-gray-700/60">
+            <div className="grid grid-cols-3 gap-6 pt-5 border-t border-gray-700/60">
               <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-[#D71920] block">99.8%</span>
-                <span className="text-xs text-gray-400 mt-1 block">Target Accuracy</span>
+                <span className="text-3xl sm:text-4xl font-extrabold text-[#D71920] block">99.8%</span>
+                <span className="text-sm text-gray-300 mt-1 block">Target Accuracy</span>
               </div>
               <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-white block">0.0005</span>
-                <span className="text-xs text-gray-400 mt-1 block">Lux Sensitivity</span>
+                <span className="text-3xl sm:text-4xl font-extrabold text-white block">0.0005</span>
+                <span className="text-sm text-gray-300 mt-1 block">Lux Sensitivity</span>
               </div>
               <div>
-                <span className="text-2xl sm:text-3xl font-extrabold text-white block">60 fps</span>
-                <span className="text-xs text-gray-400 mt-1 block">Real-Time Inference</span>
+                <span className="text-3xl sm:text-4xl font-extrabold text-white block">60 fps</span>
+                <span className="text-sm text-gray-300 mt-1 block">Real-Time Inference</span>
               </div>
             </div>
 
-            <div className="pt-2 flex items-center gap-4">
+            <div className="pt-3 flex flex-wrap items-center gap-4">
               <Link
                 href="/technologies/deepinview-ai"
-                className="px-6 py-2.5 bg-[#D71920] hover:bg-[#B81419] text-white text-xs font-semibold rounded tracking-wide transition-colors flex items-center gap-2 group"
+                className="px-7 py-3 bg-[#D71920] hover:bg-[#B81419] text-white text-sm font-semibold rounded-full tracking-wide transition-colors flex items-center gap-2 group shadow-md"
               >
                 <span>Read Technology Whitepaper</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
 
               <Link
                 href="/products/video-security/network-cameras"
-                className="px-6 py-2.5 border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white text-xs font-semibold rounded tracking-wide transition-colors"
+                className="px-7 py-3 border border-gray-600 hover:border-gray-400 text-gray-200 hover:text-white text-sm font-semibold rounded-full tracking-wide transition-colors"
               >
                 <span>Explore Products</span>
               </Link>

@@ -27,40 +27,40 @@ export const SiteFooter: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2.5 h-2.5 bg-[#D71920] rounded-xs" />
-              <h3 className="text-lg font-bold text-white tracking-wide">
+              <h3 className="text-xl font-bold text-white tracking-wide">
                 Subscribe to NexusVision Enterprise Insights
               </h3>
             </div>
-            <p className="text-xs text-gray-400 max-w-xl leading-relaxed">
+            <p className="text-sm text-gray-300 max-w-xl leading-relaxed">
               Receive quarterly firmware release advisories, whitepapers on edge AIoT innovations, and invitation-only security summit keynote passes.
             </p>
           </div>
 
           <div className="w-full lg:w-auto">
             {subscribed ? (
-              <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold py-2">
-                <CheckCircle2 className="w-4 h-4" />
+              <div className="flex items-center gap-2 text-emerald-400 text-sm font-semibold py-2">
+                <CheckCircle2 className="w-5 h-5" />
                 <span>Thank you. You have been enrolled in Enterprise Technical Bulletins.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto">
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-3" />
+                  <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter corporate email..."
-                    className="w-full sm:w-72 bg-gray-800/80 border border-gray-700 text-white text-xs pl-9 pr-3 py-2.5 rounded focus:border-[#D71920] outline-hidden placeholder:text-gray-500"
+                    className="w-full sm:w-80 bg-gray-800/80 border border-gray-700 text-white text-sm pl-10 pr-3.5 py-3 rounded-lg focus:border-[#D71920] outline-hidden placeholder:text-gray-500"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-[#D71920] hover:bg-[#B81419] text-white text-xs font-bold rounded transition-colors flex items-center justify-center gap-1.5 shrink-0 cursor-pointer"
+                  className="px-6 py-3 bg-[#D71920] hover:bg-[#B81419] text-white text-sm font-bold rounded-lg transition-colors flex items-center justify-center gap-2 shrink-0 cursor-pointer shadow-md"
                 >
                   <span>Subscribe</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             )}
@@ -71,15 +71,15 @@ export const SiteFooter: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6 pb-12 border-b border-gray-700/60">
           {/* Col 1: Company */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 border-l-2 border-[#D71920] pl-2">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4.5 border-l-2 border-[#D71920] pl-2.5">
               {footerNavigation.company.title}
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-3 text-[13.5px]">
               {footerNavigation.company.links.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white hover:underline transition-colors block"
+                    className="text-gray-300 hover:text-white hover:underline transition-colors block"
                   >
                     {link.label}
                   </Link>
@@ -90,15 +90,15 @@ export const SiteFooter: React.FC = () => {
 
           {/* Col 2: Products */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 border-l-2 border-[#D71920] pl-2">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4.5 border-l-2 border-[#D71920] pl-2.5">
               {footerNavigation.products.title}
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-3 text-[13.5px]">
               {footerNavigation.products.links.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white hover:underline transition-colors block"
+                    className="text-gray-300 hover:text-white hover:underline transition-colors block"
                   >
                     {link.label}
                   </Link>
@@ -109,15 +109,15 @@ export const SiteFooter: React.FC = () => {
 
           {/* Col 3: Solutions */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 border-l-2 border-[#D71920] pl-2">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4.5 border-l-2 border-[#D71920] pl-2.5">
               {footerNavigation.solutions.title}
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-3 text-[13.5px]">
               {footerNavigation.solutions.links.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white hover:underline transition-colors block"
+                    className="text-gray-300 hover:text-white hover:underline transition-colors block"
                   >
                     {link.label}
                   </Link>
@@ -128,15 +128,15 @@ export const SiteFooter: React.FC = () => {
 
           {/* Col 4: Partners */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 border-l-2 border-[#D71920] pl-2">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4.5 border-l-2 border-[#D71920] pl-2.5">
               {footerNavigation.partners.title}
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-3 text-[13.5px]">
               {footerNavigation.partners.links.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white hover:underline transition-colors block"
+                    className="text-gray-300 hover:text-white hover:underline transition-colors block"
                   >
                     {link.label}
                   </Link>
@@ -147,15 +147,15 @@ export const SiteFooter: React.FC = () => {
 
           {/* Col 5: Support */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4 border-l-2 border-[#D71920] pl-2">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4.5 border-l-2 border-[#D71920] pl-2.5">
               {footerNavigation.support.title}
             </h4>
-            <ul className="space-y-2.5 text-xs">
+            <ul className="space-y-3 text-[13.5px]">
               {footerNavigation.support.links.map((link, i) => (
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-white hover:underline transition-colors block"
+                    className="text-gray-300 hover:text-white hover:underline transition-colors block"
                   >
                     {link.label}
                   </Link>
@@ -166,7 +166,7 @@ export const SiteFooter: React.FC = () => {
         </div>
 
         {/* Global Regional & Trust Bar */}
-        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400 border-b border-gray-800">
+        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs sm:text-[13px] text-gray-300 border-b border-gray-800">
           <div className="flex items-center gap-6">
             <button
               onClick={() => setIsLangModalOpen(true)}
@@ -175,8 +175,8 @@ export const SiteFooter: React.FC = () => {
               <Globe className="w-4 h-4 text-[#D71920]" />
               <span>Location / Language: <strong className="text-white">{currentLanguage}</strong></span>
             </button>
-            <div className="hidden sm:flex items-center gap-1.5 text-gray-400">
-              <Shield className="w-3.5 h-3.5 text-emerald-500" />
+            <div className="hidden sm:flex items-center gap-1.5 text-gray-300">
+              <Shield className="w-3.5 h-3.5 text-emerald-400" />
               <span>ISO 27001 &amp; ISO 9001 Certified Security Operations</span>
             </div>
           </div>
@@ -194,9 +194,9 @@ export const SiteFooter: React.FC = () => {
         </div>
 
         {/* Legal & Copyright */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-gray-400">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <p>© 2026 NexusVision Digital Technology Co., Ltd. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-5">
             <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#cookie" className="hover:text-white transition-colors">Cookie Policy</a>
             <a href="#terms" className="hover:text-white transition-colors">Terms of Use</a>

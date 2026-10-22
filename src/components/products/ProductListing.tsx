@@ -149,21 +149,21 @@ export const ProductListing: React.FC<ProductListingProps> = ({
         {/* Right Product Grid Column */}
         <div className="flex-1 w-full space-y-4">
           {/* Top Bar matching Hikvision Screenshot 4: "130 Products Matches" and Sort */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-gray-200/80 gap-3">
-            <span className="text-sm font-normal text-gray-800">
-              <strong className="font-semibold text-gray-900">{filteredProducts.length}</strong> Products Matches
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3.5 border-b border-gray-200 gap-3">
+            <span className="text-[15px] font-normal text-gray-700">
+              <strong className="font-bold text-gray-950 text-base">{filteredProducts.length}</strong> Products Matches
             </span>
 
             {/* Sort Dropdown */}
-            <div className="flex items-center gap-2 text-xs">
-              <span className="text-gray-500 flex items-center gap-1 font-normal">
+            <div className="flex items-center gap-2 text-[13px]">
+              <span className="text-gray-500 flex items-center gap-1.5 font-normal">
                 <ArrowUpDown className="w-3.5 h-3.5 text-gray-400" />
                 Sort:
               </span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-white border border-gray-300 text-gray-700 text-xs rounded px-2.5 py-1.5 focus:border-[#D71920] outline-hidden cursor-pointer"
+                className="bg-white border border-gray-300 text-gray-800 text-[13px] rounded px-3 py-1.5 focus:border-[#D71920] outline-hidden cursor-pointer"
               >
                 <option value="recommended">Featured &amp; Recommended</option>
                 <option value="newest">Newest Releases</option>

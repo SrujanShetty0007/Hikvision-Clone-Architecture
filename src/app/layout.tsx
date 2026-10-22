@@ -17,6 +17,7 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased min-h-screen flex flex-col bg-white text-[#222222]`}>
+      <body className={`${inter.variable} ${inter.className} font-sans antialiased min-h-screen flex flex-col bg-white text-[#222222]`}>
         <EnterpriseProvider>
           <SiteHeader />
           <main className="flex-1 w-full">

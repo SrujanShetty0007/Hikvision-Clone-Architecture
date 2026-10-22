@@ -40,7 +40,7 @@ const slides: HeroSlide[] = [
   {
     id: 'slide-tech-summit',
     title: 'NexTech Star 2026',
-    subtitle: 'Your Vision. Your Impact. Your Stage.',
+    subtitle: 'Your Vision. Your Impact. Your Stage. Global AIoT Keynote.',
     primaryCtaText: 'Unveil Now',
     primaryCtaLink: '/technologies/deepinview-ai',
     secondaryCtaText: 'Watch Video',
@@ -48,6 +48,14 @@ const slides: HeroSlide[] = [
     secondaryCtaType: 'video',
     imageUrl: '/images/hero-summit.jpg',
     theme: 'dark',
+    pillBadges: [
+      '8th Gen DeepinView NPU',
+      'ColorVu 3.0 Full-Color Optics',
+      'Cloud-Edge Hybrid Computing',
+      'Touchless Biometric Access',
+      'Acoustic Strobe Deterrence',
+      'Zero-Latency 4K Video Streaming',
+    ],
   },
   {
     id: 'slide-smart-education',
@@ -59,6 +67,14 @@ const slides: HeroSlide[] = [
     secondaryCtaLink: '/support/downloads',
     imageUrl: '/images/hero-education.jpg',
     theme: 'light',
+    pillBadges: [
+      '4K Interactive Touch Panels',
+      'Touchless Campus Attendance',
+      'Campus Perimeter Radar & Video Linkage',
+      'Emergency Alarm Broadcast',
+      'Smart Lecture Capture',
+      'Cloud Classroom Suite',
+    ],
   },
   {
     id: 'slide-solar-vu',
@@ -76,6 +92,7 @@ const slides: HeroSlide[] = [
       '4G LTE Cellular Uplink',
       '7 Days Rainy Weather Endurance',
       'F1.0 Full-Color at 0.0005 Lux',
+      'IP67 Weatherproof Rating',
     ],
   },
 ];
@@ -113,7 +130,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
 
   return (
     <section
-      className="relative w-full h-[65vh] min-h-[520px] max-h-[780px] bg-gray-950 overflow-hidden select-none"
+      className="relative w-full h-[88vh] min-h-[720px] max-h-[960px] bg-gray-950 overflow-hidden select-none"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Promotional Hero Showcase"
@@ -139,7 +156,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
             className={`absolute inset-0 ${
               s.theme === 'dark'
                 ? 'bg-gradient-to-r from-black/85 via-black/40 to-transparent'
-                : 'bg-gradient-to-r from-white/90 via-white/50 to-transparent'
+                : 'bg-gradient-to-r from-white/95 via-white/60 to-transparent'
             }`}
           />
         </div>
@@ -147,52 +164,52 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
 
       {/* Slide Content Layer */}
       <div className="relative z-20 h-full container-enterprise flex flex-col justify-between py-12 md:py-16">
-        {/* Main Text Content */}
-        <div className="max-w-2xl mt-4 md:mt-10 animate-fade-in" key={slide.id}>
+        {/* Main Text Content matching Hikvision Screenshot 1 */}
+        <div className="max-w-3xl mt-10 md:mt-16 animate-fade-in" key={slide.id}>
           <h1
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-4 ${
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] mb-5 ${
               isDark ? 'text-white' : 'text-gray-950'
             }`}
           >
             {slide.title}
           </h1>
           <p
-            className={`text-base sm:text-lg md:text-xl font-normal leading-relaxed mb-8 max-w-xl ${
-              isDark ? 'text-gray-200' : 'text-gray-700'
+            className={`text-xl sm:text-2xl md:text-3xl font-normal leading-snug mb-9 max-w-2xl ${
+              isDark ? 'text-gray-200' : 'text-gray-800'
             }`}
           >
             {slide.subtitle}
           </p>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3.5">
+          <div className="flex flex-wrap items-center gap-4">
             <Link
               href={slide.primaryCtaLink}
-              className="px-6 sm:px-8 py-2.5 bg-[#D71920] hover:bg-[#B81419] text-white text-xs font-semibold rounded tracking-wide transition-colors shadow-sm flex items-center gap-2 group cursor-pointer"
+              className="px-9 py-3.5 bg-[#D71920] hover:bg-[#B81419] text-white text-base font-semibold rounded-full shadow-lg flex items-center gap-2 group cursor-pointer transition-all"
             >
               <span>{slide.primaryCtaText}</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
             {slide.secondaryCtaText && (
               slide.secondaryCtaType === 'video' ? (
                 <button
                   onClick={onOpenVideo}
-                  className={`px-5 sm:px-6 py-2.5 rounded text-xs font-semibold border transition-colors flex items-center gap-2 cursor-pointer ${
+                  className={`px-8 py-3.5 rounded-full text-base font-semibold border transition-all flex items-center gap-2 cursor-pointer ${
                     isDark
-                      ? 'border-white/80 text-white hover:bg-white/10'
+                      ? 'border-white/80 text-white hover:bg-white/20'
                       : 'border-gray-800 text-gray-900 hover:bg-black/5'
                   }`}
                 >
-                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <Play className="w-4 h-4 fill-current" />
                   <span>{slide.secondaryCtaText}</span>
                 </button>
               ) : (
                 <Link
                   href={slide.secondaryCtaLink || '#'}
-                  className={`px-5 sm:px-6 py-2.5 rounded text-xs font-semibold border transition-colors ${
+                  className={`px-8 py-3.5 rounded-full text-base font-semibold border transition-all ${
                     isDark
-                      ? 'border-white/80 text-white hover:bg-white/10'
+                      ? 'border-white/80 text-white hover:bg-white/20'
                       : 'border-gray-800 text-gray-900 hover:bg-black/5'
                   }`}
                 >
@@ -203,15 +220,18 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onOpenVideo }) => {
           </div>
         </div>
 
-        {/* Floating Feature Tags at Bottom */}
+        {/* Frosted Translucent Feature Badges at Bottom matching Screenshot 1 */}
         {slide.pillBadges && slide.pillBadges.length > 0 && (
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-2.5 max-w-4xl pt-4 animate-fade-in">
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-3.5 max-w-5xl pb-6 animate-fade-in">
             {slide.pillBadges.map((badge, bIdx) => (
               <div
                 key={bIdx}
-                className="px-3.5 py-2 rounded bg-white/90 border border-gray-200 text-xs font-medium text-gray-800 shadow-2xs flex items-center gap-2 transition-colors cursor-default"
+                className={`px-6 py-3 rounded-md backdrop-blur-md border text-sm font-semibold shadow-xs flex items-center justify-center text-center transition-colors cursor-default ${
+                  isDark
+                    ? 'bg-black/40 hover:bg-black/60 border-white/20 text-white'
+                    : 'bg-white/60 hover:bg-white/80 border-white/80 text-gray-900'
+                }`}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D71920]" />
                 <span className="line-clamp-1">{badge}</span>
               </div>
             ))}

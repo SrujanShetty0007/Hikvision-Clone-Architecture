@@ -49,24 +49,24 @@ export default async function SubcategoryPage({ params }: SubcategoryPageProps) 
   return (
     <div className="w-full bg-[#FBFBFB] font-sans">
       {/* Category & Subcategory Header matching Hikvision Screenshot 4 */}
-      <div className="bg-white border-b border-gray-200 py-6">
+      <div className="bg-white border-b border-gray-200 py-8">
         <div className="container-enterprise">
-          <nav className="flex items-center space-x-2 text-xs text-gray-400 mb-2">
-            <Link href="/" className="hover:text-gray-900">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href="/products" className="hover:text-gray-900">Products</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link href={`/products/${category.slug}`} className="hover:text-gray-900">
+          <nav className="flex items-center space-x-2 text-[13px] text-gray-400 mb-3">
+            <Link href="/" className="hover:text-gray-900 transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link href="/products" className="hover:text-gray-900 transition-colors">Products</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <Link href={`/products/${category.slug}`} className="hover:text-gray-900 transition-colors">
               {category.name}
             </Link>
-            <ChevronRight className="w-3 h-3" />
+            <ChevronRight className="w-3.5 h-3.5" />
             <span className="text-gray-900 font-semibold">{subcategory.name}</span>
           </nav>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-950 tracking-tight">
             {subcategory.name}
           </h1>
-          <p className="text-xs sm:text-sm text-gray-600 mt-1.5 max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-600 mt-2.5 max-w-3xl leading-relaxed font-normal">
             {subcategory.description}
           </p>
         </div>

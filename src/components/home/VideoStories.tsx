@@ -2,172 +2,211 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Play, X, Clock } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
-interface VideoStoryItem {
+interface CaseStudySlide {
   id: string;
   title: string;
-  subtitle: string;
-  duration: string;
-  thumbnail: string;
-  category: string;
+  tags: string;
+  imageUrl: string;
+  link: string;
 }
 
-const videoStories: VideoStoryItem[] = [
+const caseStudies: CaseStudySlide[] = [
   {
-    id: 'vid-1',
-    title: 'ColorVu Gen-3: Overcoming Low-Light Limits',
-    subtitle: 'Behind the engineering of F1.0 super apertures and ultra-large multi-spectral sensors.',
-    duration: '04:12',
-    thumbnail: '/images/card-cameras.jpg',
-    category: 'Innovation Spotlight',
+    id: 'case-1',
+    title: "Bank Dana Nusantara builds a smarter workplace with NexusVision's smart building solution",
+    tags: 'Parking management, Speed gates and turnstiles, Access Control, Audio products, Building, Entrance & exit management, Guanlan large-scale AI models, Indonesia, Information display, Interactive flat panel displays, Network cameras, Networking, Perimeter Protection, Radar, Software, Thermal, Visitor management',
+    imageUrl: '/images/case-study-building.jpg',
+    link: '/solutions/industry/commercial',
   },
   {
-    id: 'vid-2',
-    title: 'Smart Campus Deployment: St. Andrews Academy',
-    subtitle: 'How 1,800 students transitioned to touchless biometric gates and 4K interactive displays.',
-    duration: '05:48',
-    thumbnail: '/images/hero-education.jpg',
-    category: 'Case Study',
+    id: 'case-2',
+    title: 'Mojave Clean Energy 500MW Facility Deploys 120 Off-Grid Autonomous SolarVu Cameras',
+    tags: 'SolarVu Autonomous Series, Perimeter Radar, 4G Cellular Linkage, Clean Energy, Thermal Early Fire Warning, High Desert Remote Security, California',
+    imageUrl: '/images/card-solar.jpg',
+    link: '/solutions/industry/energy',
   },
   {
-    id: 'vid-3',
-    title: 'SolarVu in the Mojave: 120 Off-Grid Cameras',
-    subtitle: 'Autonomous clean-energy security for a 500MW utility-scale solar generating facility.',
-    duration: '03:35',
+    id: 'case-3',
+    title: 'St. Andrews Metropolitan Academy Upgrades 1,800 Students to MinMoe Biometric Access',
+    tags: 'Smart Campus, MinMoe Touchless Access Terminals, 4K Interactive Displays, Visitor Management, Student Safety Linkage',
+    imageUrl: '/images/hero-education.jpg',
+    link: '/solutions/industry/education',
+  },
+];
+
+interface NewsItem {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  thumbnail: string;
+  link: string;
+}
+
+const rightNewsItems: NewsItem[] = [
+  {
+    id: 'news-1',
+    title: 'Wireless Security Cameras Explained: Types, Technologies, and How to Choose the Right Solution',
+    category: 'HikSnap',
+    date: 'August 28, 2026',
     thumbnail: '/images/card-solar.jpg',
-    category: 'Field Documentary',
+    link: '/products/video-security/network-cameras/nex-solar-camera-4g',
+  },
+  {
+    id: 'news-2',
+    title: 'How to effectively leverage AI-powered intelligent displays and cloud collaboration to transform the full classroom experience',
+    category: 'Blog',
+    date: 'September 07, 2026',
+    thumbnail: '/images/hero-education.jpg',
+    link: '/solutions/industry/education',
+  },
+  {
+    id: 'news-3',
+    title: 'The future of AI video encoding: Poll finds surging demand for AI-based video encoding',
+    category: 'Blog',
+    date: 'September 17, 2026',
+    thumbnail: '/images/ai-encoding.jpg',
+    link: '/technologies/deepinview-ai',
   },
 ];
 
 export const VideoStories: React.FC = () => {
-  const [activeVideo, setActiveVideo] = useState<VideoStoryItem | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? caseStudies.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === caseStudies.length - 1 ? 0 : prev + 1));
+  };
+
+  const currentCase = caseStudies[currentSlide];
 
   return (
-    <section className="py-16 bg-white" aria-label="Customer Video Stories">
-      <div className="container-enterprise">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
-          <div>
-            <span className="text-xs font-bold text-[#D71920] uppercase tracking-wider block mb-1">
-              Field Documentaries &amp; Tech Insights
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-              Video Stories &amp; Keynotes
-            </h2>
+    <section className="py-16 md:py-20 bg-white font-sans" aria-label="News and Stories">
+      <div className="container-enterprise space-y-8">
+        {/* TOP: Wide Case Study Carousel Banner (matching Hikvision Screenshot 2) */}
+        <div className="relative w-full rounded-2xl overflow-hidden shadow-md bg-gray-950 min-h-[340px] md:min-h-[400px] flex flex-col justify-end p-8 md:p-12 text-white group">
+          <Image
+            src={currentCase.imageUrl}
+            alt={currentCase.title}
+            fill
+            className="object-cover object-center transition-all duration-700 pointer-events-none"
+            sizes="100vw"
+          />
+          {/* Subtle gradient wash to guarantee contrast matching Screenshot 2 */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none" />
+
+          {/* Banner Content */}
+          <div className="relative z-10 max-w-4xl space-y-3 animate-fade-in" key={currentCase.id}>
+            <Link href={currentCase.link} className="hover:underline block">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold text-white tracking-tight leading-snug">
+                {currentCase.title}
+              </h3>
+            </Link>
+            <p className="text-xs sm:text-[13px] text-gray-200 line-clamp-2 md:line-clamp-3 leading-relaxed font-normal">
+              {currentCase.tags}
+            </p>
+          </div>
+
+          {/* Carousel Arrows & Dot Indicators matching Screenshot 2 */}
+          <div className="relative z-10 flex items-center justify-center gap-4 mt-6 pt-4 border-t border-white/20">
+            <button
+              onClick={prevSlide}
+              className="w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 flex items-center justify-center text-white transition-colors cursor-pointer"
+              aria-label="Previous Case Study"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-2">
+              {caseStudies.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`transition-all rounded-full cursor-pointer ${
+                    idx === currentSlide
+                      ? 'w-6 h-2 bg-white'
+                      : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 flex items-center justify-center text-white transition-colors cursor-pointer"
+              aria-label="Next Case Study"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {videoStories.map((story) => (
-            <div
-              key={story.id}
-              className="group cursor-pointer flex flex-col"
-              onClick={() => setActiveVideo(story)}
-            >
-              {/* Thumbnail with play overlay */}
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100 mb-3">
-                <Image
-                  src={story.thumbnail}
-                  alt={story.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/45 transition-colors" />
+        {/* BOTTOM: 2-Column News & Feature Grid (matching Hikvision Screenshot 2) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Left Column (Col-7): Large ProAV Launch Feature Card */}
+          <Link
+            href="/products/infrastructure-display/displays"
+            className="lg:col-span-6 xl:col-span-7 group rounded-2xl overflow-hidden bg-gray-950 text-white flex flex-col justify-end p-8 md:p-10 relative min-h-[380px] md:min-h-[440px] shadow-sm hover:shadow-xl transition-all"
+          >
+            <Image
+              src="/images/proav-launch.jpg"
+              alt="NexusVision ProAV"
+              fill
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-                {/* Play button icon in center */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-white/90 text-[#D71920] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-[#D71920] group-hover:text-white transition-all">
-                    <Play className="w-5 h-5 fill-current ml-0.5" />
-                  </div>
-                </div>
-
-                {/* Duration badge */}
-                <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-xs text-[11px] font-mono text-white flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  <span>{story.duration}</span>
-                </div>
-
-                <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs text-[10px] font-bold uppercase tracking-wider text-white/90">
-                  {story.category}
-                </div>
-              </div>
-
-              {/* Title & Description */}
-              <h3 className="text-sm sm:text-base font-bold text-gray-900 group-hover:text-[#D71920] transition-colors leading-snug">
-                {story.title}
+            <div className="relative z-10 space-y-2.5">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-tight group-hover:text-red-300 transition-colors">
+                NexusVision launches ProAV to simplify audiovisual integration and shape richer experiences
               </h3>
-              <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">
-                {story.subtitle}
+              <p className="text-xs sm:text-[13px] text-gray-300 font-medium">
+                Latest News <span className="mx-1.5 opacity-60">|</span> August 05, 2026
               </p>
             </div>
-          ))}
-        </div>
-      </div>
+          </Link>
 
-      {/* Video Modal Player */}
-      {activeVideo && (
-        <div
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setActiveVideo(null)}
-        >
-          <div
-            className="w-full max-w-4xl bg-gray-950 rounded-2xl overflow-hidden shadow-2xl border border-gray-800 flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-4 border-b border-gray-800 flex items-center justify-between text-white">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] uppercase font-bold bg-[#D71920] px-2 py-0.5 rounded text-white">
-                  {activeVideo.category}
-                </span>
-                <h4 className="text-sm font-bold truncate max-w-lg">{activeVideo.title}</h4>
-              </div>
-              <button
-                onClick={() => setActiveVideo(null)}
-                className="text-gray-400 hover:text-white p-1"
+          {/* Right Column (Col-5): 3 Stacked Horizontal News Items */}
+          <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-between space-y-5">
+            {rightNewsItems.map((item) => (
+              <Link
+                key={item.id}
+                href={item.link}
+                className="group flex items-center gap-4 sm:gap-5 p-2 rounded-xl hover:bg-gray-50 transition-colors"
               >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Video Viewport / Simulated Player with realistic video HUD */}
-            <div className="relative aspect-video w-full bg-black flex flex-col items-center justify-center text-center p-8">
-              <Image
-                src={activeVideo.thumbnail}
-                alt={activeVideo.title}
-                fill
-                className="object-cover opacity-40 blur-xs"
-              />
-              <div className="relative z-10 space-y-4 max-w-lg">
-                <div className="w-16 h-16 rounded-full bg-[#D71920] text-white flex items-center justify-center mx-auto shadow-2xl animate-pulse">
-                  <Play className="w-7 h-7 fill-current ml-1" />
+                {/* Thumbnail */}
+                <div className="relative w-36 sm:w-44 h-24 sm:h-28 shrink-0 rounded-xl overflow-hidden bg-gray-900 shadow-xs">
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="180px"
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-white leading-snug">
-                  {activeVideo.title}
-                </h3>
-                <p className="text-xs text-gray-300">
-                  High-definition streaming presentation. Official corporate video content produced by NexusVision Global Media.
-                </p>
-                <div className="pt-2 flex justify-center gap-3">
-                  <span className="text-[11px] text-gray-400 bg-white/10 px-3 py-1 rounded-full border border-white/20">
-                    4K Ultra HD • 60 FPS • Stereo Audio
-                  </span>
-                </div>
-              </div>
-            </div>
 
-            <div className="p-4 bg-gray-900 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
-              <span>{activeVideo.subtitle}</span>
-              <button
-                onClick={() => setActiveVideo(null)}
-                className="px-3 py-1 bg-gray-800 hover:bg-gray-700 text-white rounded font-semibold"
-              >
-                Close Player
-              </button>
-            </div>
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-[14.5px] sm:text-base font-bold text-gray-900 group-hover:text-[#D71920] line-clamp-2 leading-snug transition-colors">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-gray-500 mt-2 font-medium">
+                    {item.category} <span className="mx-1.5 opacity-60">|</span> {item.date}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 };

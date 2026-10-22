@@ -47,12 +47,12 @@ export const FloatingSideActions: React.FC = () => {
         <Calculator className="w-5 h-5 group-hover:scale-110 transition-transform" />
       </Link>
 
-      {/* Scroll to Top */}
+      {/* Scroll to Top matching Screenshot 2 */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
           title="Back to Top"
-          className="w-11 h-11 bg-gray-900 hover:bg-[#D71920] text-white rounded-lg shadow-lg flex items-center justify-center transition-all cursor-pointer animate-fade-in"
+          className="w-11 h-11 bg-white hover:bg-gray-50 text-gray-700 hover:text-[#D71920] border border-gray-200 rounded-lg shadow-md flex items-center justify-center transition-all cursor-pointer animate-fade-in"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-4 h-4" />
