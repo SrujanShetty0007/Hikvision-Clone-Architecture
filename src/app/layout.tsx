@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { EnterpriseProvider } from "@/context/EnterpriseContext";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -11,6 +12,12 @@ import { AccountModal } from "@/components/layout/AccountModal";
 import { ProductInquiryModal } from "@/components/products/ProductInquiryModal";
 import { ProductComparisonBar } from "@/components/products/ProductComparisonBar";
 import { ProductComparisonModal } from "@/components/products/ProductComparisonModal";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nexusvision-global.vercel.app'),
@@ -44,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased min-h-screen flex flex-col bg-white text-[#222222]">
+      <body className={`${inter.className} antialiased min-h-screen flex flex-col bg-white text-[#222222]`}>
         <EnterpriseProvider>
           <SiteHeader />
           <main className="flex-1 w-full">
